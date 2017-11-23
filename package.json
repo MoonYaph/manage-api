@@ -1,0 +1,28 @@
+{
+  "name": "manage-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/MoonYaph/manage-api",
+  "author": "moonyaph <zhangyaphet@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon --exec babel-node -- src/index.js"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
+  },
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.2",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "jsonwebtoken": "^8.1.0",
+    "mongoose": "^4.13.2",
+    "mongoose-unique-validator": "^1.0.6",
+    "multer": "^1.3.0",
+    "nodemailer": "^4.4.0",
+    "nodemon": "^1.12.1"
+  }
+}
