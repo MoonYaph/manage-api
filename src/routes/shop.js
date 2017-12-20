@@ -1,8 +1,8 @@
 import express from 'express'
-import Category from '../controller/shop/shop'
+import Shop from '../controller/shop/shop'
 
 const router = express.Router()
 
-router.get('/restaurants/category', Category.getCategories)
-router.post('/addShop', Category.addShop)
+router.get('/restaurants/category', Shop.getCategories)
+router.post('/addShop', Shop.addShop)
 export default router

@@ -15,7 +15,7 @@ class BaseComponent {
       'img_id',
       'category_id',
       'item_id',
-      'user_id',
+      'user_id'
     ]
   }
   async fetch(url = '', data = {}, type = 'GET', resType = 'JSON') {
@@ -37,13 +37,13 @@ class BaseComponent {
       method: type,
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
+        'Content-Type': 'application/json'
+      }
     }
 
     if (type === 'POST') {
       Object.defineProperty(requestConfig, 'body', {
-        value: JSON.stringify(data),
+        value: JSON.stringify(data)
       })
     }
     let responseJson
@@ -62,7 +62,7 @@ class BaseComponent {
   }
   /**
    * get the id of id list
-   * @param {String} type 
+   * @param {String} type
    */
   async getId(type) {
     if (!this.idList.includes(type)) {
@@ -104,20 +104,25 @@ class BaseComponent {
           throw new Error('Fail to get the image id')
         }
 
-        const imgName = (new Date().getTime() + Math.ceil(Math.random() * 10000)).toString(16)+ imgId
+        const imgName =
+          (new Date().getTime() + Math.ceil(Math.random() * 10000)).toString(
+            16
+          ) + imgId
         const fullName = imgName + path.extname(files.file.name)
-        const rePath = `./iamges/${ fullName}`
+        const rePath = `./iamges/${fullName}`
         try {
           await fs.rename(files.file.path, rePath)
-          gm(rePath).resize(200, 200, '1').write(rePath, async e => {
-            if (e) {
-               throw new Error('Fail to cut the image')
-            }
-            resolve(fullName)
-          })
+          gm(rePath)
+            .resize(200, 200, '1')
+            .write(rePath, async e => {
+              if (e) {
+                throw new Error('Fail to cut the image')
+              }
+              resolve(fullName)
+            })
         } catch (error) {
           fs.unlink(files.file.path)
-          console.log('Fail to save image' )
+          console.log('Fail to save image')
           reject(error)
         }
       })
@@ -126,4 +131,3 @@ class BaseComponent {
 }
 
 export default BaseComponent
-
